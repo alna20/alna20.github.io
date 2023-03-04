@@ -9,8 +9,9 @@
     </style>
   </head>
   <body>
-    <a-scene embedded webxr="optionalFeatures:  hit-test;" ar-hit-test="target:#myobject;">
-        <a-entity id="myobject" src="./assets/index.webp"></a-entity>
+    <a-scene embedded webxr="requiredFeatures: hit-test,local-floor;
+                optionalFeatures: dom-overlay,unbounded;
+                overlayElement: #overlay;">
     </a-scene>
   </body>
 </html>
