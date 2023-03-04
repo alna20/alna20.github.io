@@ -3,12 +3,12 @@
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene embedded webxr="optionalFeatures:  hit-test;" ar-hit-test="target:#myobject;">
+    <a-scene embedded webxr="optionalFeatures:  hit-test;" ar-hit-test="target:#myobject;" look-controls hand-controls>
         <a-assets>
             <a-asset-item src="./assets/container/3,1m/gltf/3,1m.gltf" id="gltf">
             </a-asset-item>
         </a-assets>
-        <a-entity id="myobject" gltf-model="#gltf" position="0 0 -500">
+        <a-entity id="myobject" gltf-model="#gltf" position="0 0 -500" look-controls hand-controls>
         </a-entity>
     </a-scene>
   </body>
