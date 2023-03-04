@@ -3,10 +3,13 @@
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene embedded webxr="optionalFeatures:  hit-test;" ar-hit-test="target:#rectile;">
+    <a-scene embedded webxr="optionalFeatures:  hit-test;" ar-hit-test="target:#myobject;">
         <a-assets>
-            <img id="rectile" src="./index.png">
+            <a-asset-item src="./assets/container/3,1m/gltf/3,1m.gltf" id="gltf">
+            </a-asset-item>
         </a-assets>
+        <a-entity id="myobject" gltf-model="#gltf" position="0 0 -500">
+        </a-entity>
     </a-scene>
   </body>
 </html>
