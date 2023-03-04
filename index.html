@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <style>
+        a-scene {
+            height: 300px;
+            width: 600px;
+        }
+    </style>
+  </head>
+  <body>
+    <a-scene embedded webxr="optionalFeatures:  hit-test;" ar-hit-test="target:#myobject;">
+        <a-entity id="myobject" src="./assets/index.webp"></a-entity>
+    </a-scene>
+  </body>
+</html>
