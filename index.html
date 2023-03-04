@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AR Hit Testing Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene embedded arjs>
+      <a-assets>
+        <img id="reticle" src="./index.png">
+      </a-assets>
+      <a-marker preset="hiro">
+        <a-entity camera></a-entity>
+        <a-entity id="reticle" geometry="primitive: ring; radiusInner: 0.03; radiusOuter: 0.04" material="color: yellow; shader: flat"></a-entity>
+      </a-marker>
+    </a-scene>
+    <script>
+      AFRAME.registerComponent('hit-test', {
+        init: function () {
+          this.el.sceneEl.addEventListener('click', this.onClick.bind(this));
+        },
+        onClick: function (event) {
+          var reticle = document.getElementById('reticle');
+          var raycaster = new THREE.Raycaster();
+          var mouse = new THREE.Vector2();
+          mouse.x = (event.detail.clientX / window.innerWidth) * 2 - 1;
+          mouse.y = -(event.detail.clientY / window.innerHeight) * 2 + 1;
+          raycaster.setFromCamera(mouse, this.el.sceneEl.camera);
+          var intersects = raycaster.intersectObjects(this.el.sceneEl.object3D.children, true);
+          if (intersects.length > 0) {
+            var position = intersects[0].point;
+            var box = document.createElement('a-box');
+            box.setAttribute('position', position);
+            this.el.sceneEl.appendChild(box);
+          }
+        }
+      });
+      document.getElementById('reticle').setAttribute('hit-test', '');
+    </script>
+  </body>
+</html>
